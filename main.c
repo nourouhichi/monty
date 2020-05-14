@@ -20,12 +20,12 @@ int main(int argc, char **argv)
 	readf(f);
 	fclose(f);
 	while (stack)
-	{
-		roadrunner = stack;
-		stack = stack->next;
-		free(roadrunner);
-	}
-	free(stack);
+        {
+                roadrunner = stack;
+                stack = stack->next;
+                free(roadrunner);
+        }
+        free(stack);
 	return (0);
 }
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
  */
 void find_op(char *line, int n)
 {
-	stack_t /**roadrunner,*/ *new_node;
+	stack_t *roadrunner, *new_node;
 	int i = 0, j;
 	unsigned int x;
 	char *op;
@@ -60,7 +60,8 @@ void find_op(char *line, int n)
 		if (!op)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", n);
-			exit(EXIT_FAILURE);}
+			exit(EXIT_FAILURE);
+		}
 		if (op[0] != '-')
 		{
 			for (j = 0; op[j] != '\0'; j++)
@@ -68,9 +69,19 @@ void find_op(char *line, int n)
 				if (isdigit(op[j]) == 0)
 				{
 					fprintf(stderr, "L%d: usage: push integer\n", n);
-					exit(EXIT_FAILURE); }}}
+					exit(EXIT_FAILURE); }
+			}
+		}
 		x = atoi(op);
-		new_node = make_new_node(x);
+		new_node = malloc(sizeof(stack_t));
+	        if (!new_node)
+        	{
+                	fprintf(stderr, "Error: malloc failed\n");
+                	free(new_node);
+                	exit(EXIT_FAILURE);
+        	}
+        	new_node->n = x;
+        	new_node->prev = NULL;
 		func[0].f(&new_node, n);
 		return; }
 	for (i = 0; func[i].opcode; i++)
@@ -78,18 +89,22 @@ void find_op(char *line, int n)
 		if (strcmp(op, func[i].opcode) == 0)
 		{
 			func[i].f(&stack, n);
-			return; }}
+			return; }
+	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", n, op);
-	/*while (stack)
+	while (stack)
 	{
 		roadrunner = stack;
 		stack = stack->next;
-		free(roadrunner); }
-	free(stack);*/
+		free(roadrunner);
+	}
+	free(stack);
 	exit(EXIT_FAILURE);
+
+}
 /**
  * push_to_stack - pushes nodes to the stack
- * @new_node:same
+ * @stack:same
  * @n:same
  */
 void push_to_stack(stack_t **new_node, unsigned int n)
@@ -106,24 +121,4 @@ void push_to_stack(stack_t **new_node, unsigned int n)
 		stack->prev = *new_node;
 		stack = *new_node;
 	}
-}
-/**
- * make_new_node - initializes a new node
- * @val: data
- * Return:pointer to the node
- */
-stack_t *make_new_node(unsigned int val)
-{
-	stack_t *new_node;
-
-	new_node = malloc(sizeof(stack_t));
-	if (!new_node)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(new_node);
-		exit(EXIT_FAILURE);
-	}
-		new_node->n = val;
-		new_node->prev = NULL;
-		return (new_node);
 }
