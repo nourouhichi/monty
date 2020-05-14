@@ -64,14 +64,6 @@ void swap_2_top(stack_t **stack, unsigned int n)
 	data = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = data;
-	/*
-	(*stack)->next = bowl->next;
-	if (bowl->next)
-		bowl->next->prev = *stack;
-	bowl->next = *stack;
-	(*stack)->prev = bowl;
-	bowl->prev = NULL;
-	*stack = bowl;*/
 }
 /**
  * add_2_top - adds the value of the tow tops
@@ -89,4 +81,5 @@ void add_2_top(stack_t **stack, unsigned int n)
 	}
 	bowl->n += (*stack)->n;
 	remove_top(stack, n);
+	bowl->prev == NULL;
 }
