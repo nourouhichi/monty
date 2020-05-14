@@ -20,12 +20,12 @@ int main(int argc, char **argv)
 	readf(f);
 	fclose(f);
 	while (stack)
-        {
-                roadrunner = stack;
-                stack = stack->next;
-                free(roadrunner);
-        }
-        free(stack);
+	{
+		roadrunner = stack;
+		stack = stack->next;
+		free(roadrunner);
+	}
+	free(stack);
 	return (0);
 }
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
  */
 void find_op(char *line, int n)
 {
-	stack_t /**roadrunner,*/ *new_node;
+	stack_t *new_node;
 	int i = 0, j;
 	unsigned int x;
 	char *op;
@@ -49,10 +49,9 @@ void find_op(char *line, int n)
 		{"swap", swap_2_top},
 		{"add", add_2_top},
 		{"nop", nothing},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 	op = strtok(line, "\t\r\n ");
-	if (!op)
+	if (!op || op[0] == '#')
 		return;
 	if (strcmp(op, "push") == 0)
 	{
@@ -60,7 +59,7 @@ void find_op(char *line, int n)
 		if (!op)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", n);
-			exit(EXIT_FAILURE);}
+			exit(EXIT_FAILURE); }
 		if (op[0] != '-')
 		{
 			for (j = 0; op[j] != '\0'; j++)
@@ -79,15 +78,7 @@ void find_op(char *line, int n)
 		{
 			func[i].f(&stack, n);
 			return; }}
-	fprintf(stderr, "L%d: unknown instruction %s\n", n, op);
-	/*while (stack)
-	{
-		roadrunner = stack;
-		stack = stack->next;
-		free(roadrunner); }
-	free(stack);*/
-	exit(EXIT_FAILURE);
-}
+	printer(op, n); }
 /**
  * push_to_stack - pushes nodes to the stack
  * @new_node:same
@@ -109,19 +100,22 @@ void push_to_stack(stack_t **new_node, unsigned int n)
 	}
 }
 /**
+ * make_new_node - initializes a new node
+ * @val: data
+ * Return:pointer to the node
  */
 stack_t *make_new_node(unsigned int val)
 {
 	stack_t *new_node;
 
 	new_node = malloc(sizeof(stack_t));
-                if (!new_node)
-                {
-                        fprintf(stderr, "Error: malloc failed\n");
-                        free(new_node);
-                        exit(EXIT_FAILURE);
-                }
-                new_node->n = val;
-                new_node->prev = NULL;
+	if (!new_node)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(new_node);
+		exit(EXIT_FAILURE);
+	}
+		new_node->n = val;
+		new_node->prev = NULL;
 		return (new_node);
 }
