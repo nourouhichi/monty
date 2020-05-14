@@ -54,20 +54,24 @@ void remove_top(stack_t **stack, unsigned int n)
 void swap_2_top(stack_t **stack, unsigned int n)
 {
 
-	stack_t *bowl = (*stack)->next;
+	int data;
 
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", n);
 		exit(EXIT_FAILURE);
 	}
+	data = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = data;
+	/*
 	(*stack)->next = bowl->next;
 	if (bowl->next)
 		bowl->next->prev = *stack;
 	bowl->next = *stack;
 	(*stack)->prev = bowl;
 	bowl->prev = NULL;
-	*stack = bowl;
+	*stack = bowl;*/
 }
 /**
  * add_2_top - adds the value of the tow tops
