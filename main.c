@@ -73,7 +73,8 @@ void find_op(char *line, int n)
 			}
 		}
 		x = atoi(op);
-		new_node = malloc(sizeof(stack_t));
+		new_node = make_new_node(x);
+		/*new_node = malloc(sizeof(stack_t));
 	        if (!new_node)
         	{
                 	fprintf(stderr, "Error: malloc failed\n");
@@ -81,7 +82,7 @@ void find_op(char *line, int n)
                 	exit(EXIT_FAILURE);
         	}
         	new_node->n = x;
-        	new_node->prev = NULL;
+        	new_node->prev = NULL;*/
 		func[0].f(&new_node, n);
 		return; }
 	for (i = 0; func[i].opcode; i++)
@@ -104,7 +105,7 @@ void find_op(char *line, int n)
 }
 /**
  * push_to_stack - pushes nodes to the stack
- * @stack:same
+ * @new_node:same
  * @n:same
  */
 void push_to_stack(stack_t **new_node, unsigned int n)
@@ -121,4 +122,21 @@ void push_to_stack(stack_t **new_node, unsigned int n)
 		stack->prev = *new_node;
 		stack = *new_node;
 	}
+}
+/**
+ */
+stack_t *make_new_node(unsigned int val)
+{
+	stack_t *new_node;
+
+	new_node = malloc(sizeof(stack_t));
+                if (!new_node)
+                {
+                        fprintf(stderr, "Error: malloc failed\n");
+                        free(new_node);
+                        exit(EXIT_FAILURE);
+                }
+                new_node->n = val;
+                new_node->prev = NULL;
+		return (new_node);
 }
