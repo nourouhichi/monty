@@ -58,7 +58,7 @@ void swap_2_top(stack_t **stack, unsigned int n)
 
 	if (!*stack || !(*stack)->next)
 	{
-		printf("L%d: can't swap, stack too short\n", n);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", n);
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next = bowl->next;
