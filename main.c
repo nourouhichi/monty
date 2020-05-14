@@ -36,7 +36,7 @@ int main(int argc, char **argv)
  */
 void find_op(char *line, int n)
 {
-	stack_t *new_node;
+	stack_t /**roadrunner,*/ *new_node;
 	int i = 0, j;
 	unsigned int x;
 	char *op;
@@ -49,9 +49,10 @@ void find_op(char *line, int n)
 		{"swap", swap_2_top},
 		{"add", add_2_top},
 		{"nop", nothing},
-		{NULL, NULL}};
+		{NULL, NULL}
+	};
 	op = strtok(line, "\t\r\n ");
-	if (!op || op[0] == '#')
+	if (!op)
 		return;
 	if (strcmp(op, "push") == 0)
 	{
@@ -59,7 +60,7 @@ void find_op(char *line, int n)
 		if (!op)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", n);
-			exit(EXIT_FAILURE); }
+			exit(EXIT_FAILURE);}
 		if (op[0] != '-')
 		{
 			for (j = 0; op[j] != '\0'; j++)
@@ -78,7 +79,14 @@ void find_op(char *line, int n)
 		{
 			func[i].f(&stack, n);
 			return; }}
-	printer(op, n); }
+	fprintf(stderr, "L%d: unknown instruction %s\n", n, op);
+	/*while (stack)
+	{
+		roadrunner = stack;
+		stack = stack->next;
+		free(roadrunner); }
+	free(stack);*/
+	exit(EXIT_FAILURE);
 /**
  * push_to_stack - pushes nodes to the stack
  * @new_node:same
