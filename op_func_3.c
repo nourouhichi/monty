@@ -46,3 +46,23 @@ void pstr(stack_t **stack , unsigned int n)
 	}
 		putchar('\n');
 }
+/**
+ * rotl - rotates
+ * @stack: same
+ * @n: same
+ */
+void rotl(stack_t **stack, unsigned int n)
+{
+	stack_t *roadrunner = *stack, *new_head = (*stack)->next, *bowl = *stack;
+
+	(void)n;
+	if (!*stack)
+		return;
+	while (roadrunner->next)
+		roadrunner = roadrunner->next;
+	new_head->prev = NULL;
+	roadrunner->next = bowl;
+	bowl->prev = roadrunner;
+	bowl->next = NULL;
+	*stack = new_head ;
+}
