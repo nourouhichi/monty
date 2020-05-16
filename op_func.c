@@ -72,17 +72,11 @@ void swap_2_top(stack_t **stack, unsigned int n)
  */
 void add_2_top(stack_t **stack, unsigned int n)
 {
-	stack_t *bowl = (*stack)->next;
-
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", n);
 		exit(EXIT_FAILURE);
 	}
-	bowl->n += (*stack)->n;
+	(*stack)->next->n += (*stack)->n;
 	remove_top(stack, n);
-	*stack = bowl;
-	(*stack)->prev = NULL;
-
-
 }
