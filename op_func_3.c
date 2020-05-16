@@ -66,3 +66,25 @@ void rotl(stack_t **stack, unsigned int n)
 	new_head->prev = NULL;
 	*stack = new_head;
 }
+/**
+ * rotr - rotates
+ * @stack: same
+ * @n: same
+ */
+void rotr(stack_t **stack, unsigned int n)
+{
+	stack_t *roadrunner;
+
+	(void)n;
+	if (!stack || (*stack && (*stack)->next))
+		return;
+	roadrunner = *stack;
+	while (roadrunner->next)
+		roadrunner = roadrunner->next;
+	(*stack)->prev = roadrunner;
+	roadrunner->next = *stack;
+	roadrunner->prev->next = NULL;
+	roadrunner->prev = NULL;
+	new_head = roadrunner;
+	*stack = roadrunner;
+}

@@ -57,4 +57,5 @@ void modu(stack_t **stack, unsigned int n);
 void pchar(stack_t **stack, unsigned int n);
 void pstr(stack_t **stack, unsigned int n);
 void rotl(stack_t **stack, unsigned int n);
+void rotr(stack_t **stack, unsigned int n);
 #endif
