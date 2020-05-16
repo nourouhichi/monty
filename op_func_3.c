@@ -64,4 +64,5 @@ void rotl(stack_t **stack, unsigned int n)
 	bowl->prev = roadrunner;
 	roadrunner->next = bowl;
 	new_head->prev = NULL;
+	*stack = new_head;
 }
