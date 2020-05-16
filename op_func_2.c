@@ -39,10 +39,10 @@ void divi(stack_t **stack, unsigned int n)
 	}
 	if ((*stack)->n == 0)
 	{
-			fprintf(stderr, "L%d: division by zero", n);
+			fprintf(stderr, "L%d: division by zero\n", n);
 			exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n /= ((*stack)->n);
+	(*stack)->next->n /= (*stack)->n;
 	remove_top(stack, n);
 
 }
