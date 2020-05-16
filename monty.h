@@ -40,7 +40,7 @@ int main(int argc, char **argv);
 FILE *openf(char *filen);
 void readf(FILE *f);
 void find_op(char *line, int n);
-stack_t *make_new_node(unsigned int val);
+void printer(char *op, int n);
 /*opcode functions*/
 void push_to_stack(stack_t **new_node, unsigned int n);
 void print_from_stack(stack_t **stack, unsigned int n);
