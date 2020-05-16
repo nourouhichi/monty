@@ -53,6 +53,7 @@ void find_op(char *line, int n)
 		{"div", divi},
 		{"mul", mult},
 		{"mod", modu},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 	op = strtok(line, "\t\r\n ");
