@@ -51,4 +51,5 @@ void add_2_top(stack_t **stack, unsigned int n);
 void nothing(stack_t **stack, unsigned int n);
 void sub(stack_t **stack, unsigned int n);
 void divi(stack_t **stack, unsigned int n);
+void mult(stack_t **stack, unsigned int n);
 #endif
