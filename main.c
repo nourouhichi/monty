@@ -56,6 +56,7 @@ void find_op(char *line, int n)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	op = strtok(line, "\t\r\n ");
