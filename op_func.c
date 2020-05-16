@@ -82,4 +82,7 @@ void add_2_top(stack_t **stack, unsigned int n)
 	bowl->n += (*stack)->n;
 	remove_top(stack, n);
 	*stack = bowl;
+	(*stack)->prev = NULL;
+
+
 }

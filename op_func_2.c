@@ -16,18 +16,13 @@ void nothing(stack_t **stack, unsigned int n)
  */
 void sub(stack_t **stack, unsigned int n)
 {
-	stack_t *bowl = (*stack)->next->next;
-
         if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", n);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->n -= (*stack)->next->n;
-	free((*stack)->next);
-	if (bowl)
-		(*stack)->next = bowl;
-	else
-		(*stack)->next = NULL;
+	(*stack)->next->n -= (*stack)->n;
+	remove_top(stack, n);
+	
 }
 
