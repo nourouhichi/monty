@@ -53,7 +53,10 @@ void find_op(char *line, int n)
 	};
 	op = strtok(line, "\t\r\n ");
 	if (!op || op[0] == '#')
+	{
+		nothing(&stack, n);
 		return;
+	}
 	if (strcmp(op, "push") == 0)
 	{
 		op = strtok(NULL, "\t\r\n ");
