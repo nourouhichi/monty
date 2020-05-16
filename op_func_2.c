@@ -34,7 +34,7 @@ void divi(stack_t **stack, unsigned int n)
 {
 	if (!*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", n);
+		fprintf(stderr, "L%d: can't div, stack too short\n", n);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
