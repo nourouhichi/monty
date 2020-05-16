@@ -49,4 +49,5 @@ void remove_top(stack_t **stack, unsigned int n);
 void swap_2_top(stack_t **stack, unsigned int n);
 void add_2_top(stack_t **stack, unsigned int n);
 void nothing(stack_t **stack, unsigned int n);
+void sub(stack_t **stack, unsigned int n);
 #endif

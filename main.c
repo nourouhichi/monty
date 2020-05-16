@@ -49,6 +49,7 @@ void find_op(char *line, int n)
 		{"swap", swap_2_top},
 		{"add", add_2_top},
 		{"nop", nothing},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 	op = strtok(line, "\t\r\n ");
