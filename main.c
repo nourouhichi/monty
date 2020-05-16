@@ -104,7 +104,7 @@ void find_op(char *line, int n)
 }
 /**
  * push_to_stack - pushes nodes to the stack
- * @stack:same
+ * @new_node:same
  * @n:same
  */
 void push_to_stack(stack_t **new_node, unsigned int n)
