@@ -50,6 +50,7 @@ void find_op(char *line, int n)
 		{"add", add_2_top},
 		{"nop", nothing},
 		{"sub", sub},
+		{"div", divi},
 		{NULL, NULL}
 	};
 	op = strtok(line, "\t\r\n ");

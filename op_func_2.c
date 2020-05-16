@@ -25,4 +25,24 @@ void sub(stack_t **stack, unsigned int n)
 	remove_top(stack, n);
 	
 }
+/**
+ * divi - divides the tow top elements of a list
+ * @stack: same
+ * @n: same
+ */
+void divi(stack_t **stack, unsigned int n)
+{
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", n);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+			fprintf(stderr, "L%d: division by zero", n);
+			exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n /= ((*stack)->n);
+	remove_top(stack, n);
 
+}
