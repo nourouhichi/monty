@@ -52,4 +52,5 @@ void nothing(stack_t **stack, unsigned int n);
 void sub(stack_t **stack, unsigned int n);
 void divi(stack_t **stack, unsigned int n);
 void mult(stack_t **stack, unsigned int n);
+void modu(stack_t **stack, unsigned int n);
 #endif

@@ -60,3 +60,23 @@ void mult(stack_t **stack, unsigned int n)
 	(*stack)->next->n *= (*stack)->n;
 	remove_top(stack, n);
 }
+/**
+ * modu - calculates the rest of div
+ * @stack: same
+ * @n:same
+ */
+void modu(stack_t **stack, unsigned int n)
+{
+	if (!*stack ||!(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", n);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", n);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n %= (*stack)->n;
+	remove_top(stack, n);
+}
