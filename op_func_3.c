@@ -22,3 +22,24 @@ void pchar(stack_t **stack, unsigned int n)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * @pstr - printd a string
+ * @stack: same
+ * @n: same
+ */
+void pstr(stack_t **stack , unsigned int n)
+{
+	stack_t *roadrunner = *stack;
+
+	(void)n;
+	if (!*stack)
+		putchar('\n');
+	while (roadrunner)
+	{
+		if((roadrunner)->n <= 0 || (roadrunner)->n > 127 || roadrunner->n < 65)
+			break;
+		putchar(roadrunner->n);
+		roadrunner = roadrunner->next;
+	}
+		putchar('\n');
+}

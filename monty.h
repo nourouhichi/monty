@@ -1,5 +1,6 @@
 #ifndef MONTY
 #define MONTY
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -54,4 +55,5 @@ void divi(stack_t **stack, unsigned int n);
 void mult(stack_t **stack, unsigned int n);
 void modu(stack_t **stack, unsigned int n);
 void pchar(stack_t **stack, unsigned int n);
+void pstr(stack_t **stack, unsigned int n);
 #endif

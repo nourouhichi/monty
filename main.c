@@ -54,6 +54,7 @@ void find_op(char *line, int n)
 		{"mul", mult},
 		{"mod", modu},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 	op = strtok(line, "\t\r\n ");
