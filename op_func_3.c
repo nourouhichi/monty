@@ -71,7 +71,7 @@ void rotl(stack_t **stack, unsigned int n)
  * @stack: same
  * @n: same
  */
-void rotr(stack_t **stack, unsigned int n)
+void rotr_(stack_t **stack, unsigned int n)
 {
 	stack_t *roadrunner;
 
