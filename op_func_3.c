@@ -33,7 +33,10 @@ void pstr(stack_t **stack , unsigned int n)
 
 	(void)n;
 	if (!*stack)
+	{
 		putchar('\n');
+		return;
+	}
 	while (roadrunner)
 	{
 		if((roadrunner)->n <= 0 || (roadrunner)->n > 127 || roadrunner->n < 65)
