@@ -52,7 +52,7 @@ void divi(stack_t **stack, unsigned int n)
  */
 void mult(stack_t **stack, unsigned int n)
 {
-	if (!(*stack)->next)
+	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", n);
 		exit(EXIT_FAILURE);
