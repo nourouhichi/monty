@@ -60,9 +60,9 @@ void rotl(stack_t **stack, unsigned int n)
 		return;
 	while (roadrunner->next)
 		roadrunner = roadrunner->next;
-	new_head->prev = NULL;
-	roadrunner->next = bowl;
-	bowl->prev = roadrunner;
 	bowl->next = NULL;
-	*stack = new_head ;
+	bowl->prev = roadrunner;
+	roadrunner->next = bowl;
+	new_head->prev = NULL;
+	*stack = new_head;
 }
