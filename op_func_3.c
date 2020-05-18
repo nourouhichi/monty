@@ -23,7 +23,7 @@ void pchar(stack_t **stack, unsigned int n)
 	}
 }
 /**
- * @pstr - printd a string
+ * pstr - printd a string
  * @stack: same
  * @n: same
  */
